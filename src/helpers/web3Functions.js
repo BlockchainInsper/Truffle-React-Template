@@ -1,4 +1,8 @@
-import Tutorial from '../abis/Tutorial.json';
+import GovernanceFactory from '../abis/GovernanceFactory.json';
+
+import Coin from '../abis/Coin.json';
+
+import TokenGovernance from '../abis/TokenGovernance.json';
 
 var Web3 = require('web3');
 
@@ -23,11 +27,30 @@ export const loadAccount = async (web3) => {
     }
 }
 
-export const loadTutorial = async (web3, networkId) => {
+export const loadFactory = async (web3, networkId) => {
     try {
-      return new web3.eth.Contract(Tutorial.abi, Tutorial.networks[networkId].address)
+      return new web3.eth.Contract(GovernanceFactory.abi, GovernanceFactory.networks[networkId].address)
     } catch (error) {
       console.log('Contract not deployed to the current network. Please select another network with Metamask.')
       return null
     }
+}
+
+export const loadCoin = async (web3, networkId, address) => {
+  try {
+    return new web3.eth.Contract(Coin.abi, address)
+  } catch (error) {
+    console.log('Contract not deployed to the current network. Please select another network with Metamask.')
+    return null
+  }
+}
+
+export const loadGovernance = async (web3, networkId, address) => {
+  try {
+    return new web3.eth.Contract(TokenGovernance.abi, address)
+  } catch (error) {
+    console.log(error)
+    console.log('Contract not deployed to the current network. Please select another network with Metamask.')
+    return null
+  }
 }

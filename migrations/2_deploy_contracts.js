@@ -1,5 +1,5 @@
-const Tutorial = artifacts.require("Tutorial");
+const GovernanceFactory = artifacts.require("GovernanceFactory");
 
 module.exports = function (deployer) {
-  deployer.deploy(Tutorial);
+  deployer.deploy(GovernanceFactory);
 };
